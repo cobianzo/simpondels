@@ -4,6 +4,19 @@ To get the latest versions of the start, test, build, eject scripts type:
 
 -- This readme is for deployment, installation ... for the code itself read readme-code.md
 
+## Installation for development
+### git clone <name of this repo>
+### cd simpsondels/
+### cp public/gameoptions-default.json public/gameoptions.json # if you don't have the command cp use `mv`
+### npm install
+### yarn start
+The localhost:3000 server will start.
+
+## deployment in server:
+check `deploy-build.sh`
+It builds the project with yarn build, then moves the built files into a temporary folder /production, which is a git clone of production git project.
+
+
 ## Available Scripts
 
 In the project directory, you can run:
