@@ -1,0 +1,53 @@
+// overwrite bt4 vars here
+
+// $brand-primary: green;
+@import "../../node_modules/bootstrap/scss/functions"; // needed to call variables.
+@import "../../node_modules/bootstrap/scss/variables";
+
+// TYPO
+$font-family-sans-serif:      'Akbar', cursive;
+$font-family-monospace:       'Balsamiq Sans', cursive, Fantasy, "Georgia", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-base:            $font-family-monospace; // $font-family-sans-serif;
+$font-size-base:              0.9rem;
+$headings-font-family:        $font-family-sans-serif;
+$btn-font-family:             $font-family-sans-serif;
+
+$line-height-base:            1.2;
+$line-height-lg:              1.2;
+$line-height-sm:              $line-height-lg;
+$line-height-headings:        1;
+
+$paragraph-margin-bottom:     0.3rem;
+
+// COLORS
+
+// overwrite the variables set up in ../../node_modules/bootstrap/scss/variables
+$primary:       #d2c400;
+$secondary:     $gray-600 !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-800 !default;
+
+$body-bg:      $primary;
+
+$character-colors: #DE1635,#8103D2,#C48800,#165cde,#ffffff,#666666,#207e17,#f3f719;
+
+@each $index, $color in $character-colors {
+    .character-#{$index} {
+      color: $color;
+    }
+  }
+  
+$character-1:   #DE1635; // Bob
+$character-2:   #8103D2; // Nelson
+$character-3:   #C48800; // Dependiente
+$character-4:   #165cde; // Quimby
+$character-5:   #ffffff; // Homer
+$character-6:   #666666; // Mr Burns
+$character-7:   #207e17; // Lenny&Carl
+$character-8:   #f3f719; // Bart
+
+$light: #e4f0a2;

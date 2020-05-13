@@ -1,0 +1,9 @@
+
+@import './bootstrap4/my-variables';
+@import './bootstrap4/my-mixins';
+
+.CardsDeck__actions {
+    .btn-info {
+        @include opacity-animation();
+    }
+}

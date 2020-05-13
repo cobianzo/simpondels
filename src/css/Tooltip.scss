@@ -1,0 +1,8 @@
+@import './bootstrap4/my-variables';
+@import './bootstrap4/my-mixins';
+
+.Tooltip {
+    background: $black;
+    color: $light;
+    padding: 15px;
+}

@@ -1,0 +1,119 @@
+@import './bootstrap4/my-variables';
+@import './bootstrap4/my-mixins';
+
+// for some reason this doesnt work.
+
+// TODO:
+// this shold g in Card.scss but it doesnt compile it.
+.Card {
+    border: 1px solid $white;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    position: relative;
+    
+    &--district {
+        background: #eff302;
+        color: $black;
+    }
+    &--character {
+        background: #120a83;
+        color: $white;
+    }
+    &--is-buyable {
+        border-color: #120a83;
+    }
+    &--built-this-hand, &--built-this-turn {
+        @include border-animation();
+        
+        .Players__player-wrapper--active & {
+            @include opacity-animation();
+        }
+    }
+    &--no-buyable {
+        opacity: 0.7;
+    }
+    &--undestroyable {
+        opacity: 0.3;
+    }
+
+    // TODO: this is not working
+    @each $index, $color in $character-colors {
+        &--color-#{$index} {
+          background: $color;
+        }
+    }
+
+    &__badge {
+        background: $black;
+        border: 1px solid $black;
+        border-radius: 50%;        
+        margin: -4%;
+        padding: 15%;
+        position: absolute;        
+        z-index: 9;
+        span {
+            transform: translate(-50%,-50%)
+        }
+        &--color-1 { background: $character-1; }
+        &--color-2 { background: $character-2; }
+        &--color-3 { background: $character-3; }
+        &--color-4 { background: $character-4; }
+        &--color-5 { background: $character-5; color: $black;}
+        &--color-6 { background: $character-6; }
+        &--color-7 { background: $character-7; }
+        &--color-8 { background: $character-8; color: $black;}
+        &--color-wildcard { 
+            background: url('/imgs/wildcard-icon.jpeg');
+            background-size: cover;
+        }
+    }
+
+    &__image {
+
+    }
+    &--killed .Card__image {
+        opacity: 0.6;
+    }
+
+    &__icon {
+        position: absolute;
+        z-index: 9;
+    }
+
+    &__wildicon {
+        color: $white;
+        font-size: 2em;
+        left: 21%;
+        position: absolute;
+        top: 0;
+    }
+    img { 
+        width: 100%;
+    }
+    .Card__title {
+        line-height: 1;
+        margin-bottom: 5px;
+    }
+
+    .small-cards & {
+        @include small-card();
+    }
+    .extra-small-cards & {
+        @include extra-small-card();
+    }
+
+    &--has-description {
+        .App--info-mode & {
+            @include opacity-animation();
+            cursor: pointer;
+            filter: grayscale(100%);
+            //@include border-animation();
+            &:hover {
+                opacity: 1;
+                filter: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,57 @@
+@import './bootstrap4/my-variables';
+@import './bootstrap4/my-mixins';
+
+.Players {
+
+    background: rgba(0,0,0,0.5);
+    border-radius: 9px;
+    padding: 10px;
+
+    &__player-wrapper {
+        transition: all 1s;
+        &--active {
+            border: 1px solid black;
+            box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+            padding: 2px 15px;
+            border-radius: 10px;
+            background: white;
+            margin-left: -40px;
+        }
+    }
+    .Card {        
+        &--cursor-pointer {
+            border: 2px solid red;            
+        }
+    }
+}
+
+.Player {
+    
+    &__points { 
+        top: 0;        
+        right: 0;
+        &--winner {
+            font-size: 3rem;
+        }
+    }
+    &__gameended {
+        top: 0;
+        z-index: 9;
+    }
+
+    &__private-cards, &__built-cards {
+        &::before {
+            content: 'cards in hand (private)';
+            position: absolute;
+            right: 40px;
+            margin-top: 20px;
+            color: $gray-400;            
+        }
+        &:empty::before {
+            display:none;
+        }
+    }
+    &__built-cards::before {
+        content: 'cards built (public)';
+    }
+}

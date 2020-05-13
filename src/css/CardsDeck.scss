@@ -1,0 +1,21 @@
+@import './bootstrap4/my-variables';
+@import './bootstrap4/my-mixins';
+
+.CardsDeck {
+    &__character-pickup {
+        .Card__title {
+            display:none;
+        }
+    }
+
+    &__actions--disabled {
+        opacity: 0.5;
+        margin-bottom: 15px;
+    }
+
+    .badge--inline {
+        position: inline-flex;
+        width: 30px;
+        height: 30px;
+    }
+}

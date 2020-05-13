@@ -1,0 +1,7 @@
+{
+"dev": false,
+"waitForPlayer": true,
+"hideIfNotCurrentPlayer": true,
+"moveOnIfOnlyOneOption": false,
+"endsGame": 8
+}

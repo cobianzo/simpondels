@@ -1,0 +1,162 @@
+// here all the imports.
+// App.js contains all the generic styles
+
+@import "bootstrap4/bt4_loader";
+@import '../css/TopNav.scss';
+
+
+@font-face {
+    font-family: 'Akbar';
+    src:url('./font/Akbar.ttf.woff') format('woff'),
+        url('./font/Akbar.ttf.svg#Akbar') format('svg'),
+        url('./font/Akbar.ttf.eot'),
+        url('./font/Akbar.ttf.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+  }
+ 
+.font-monospace {
+    font-family: $font-family-monospace;
+}
+.extra-small {
+    @extend .small;
+    font-size: 60%;
+    &.btn {
+        margin-top: -5px;
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+}
+
+.small-card {
+    @include small-card();
+}
+.extra-small-card {
+    @include extra-small-card();
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.opacity-50 {
+    opacity: 0.5;
+}
+.bg-opacity {
+    background: rgba(0,0,0,0.6);
+}
+.bg-black {
+    background: $black;
+}
+
+.border { 
+    border: 1px solid $secondary; 
+    &--white {
+        border: 1px solid $white;
+    }
+}
+
+.hover-border {
+    @extend .cursor-pointer;
+    &:hover { border: 1px solid $danger; }
+}
+.hover-rotate {
+    transition: transform 0.5s;
+    @extend .cursor-pointer;
+    &:hover { transform: rotateX(5deg) }
+}
+
+
+.top-0  { top: 0 }
+.left-0  { left: 0 }
+.rotate-left { transform: rotate(-4deg); }
+.rotate-right { transform: rotate(4deg); }
+.absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    line-height: $line-height-headings;
+}
+
+/* The element to apply the animation to */
+.border-animation {
+    @include border-animation();
+}
+
+.badge__label {
+    font-size: 2rem;
+    &--tilted {
+        transform: rotate(-5deg);
+    }
+}
+
+// not used
+.tooltipable {
+    &__tooltip {
+        background: $black;
+        display: none;        
+        color: $white;
+        left: 10%;
+        min-width: 150%;
+        position: absolute;
+        top: -50%;
+        z-index: 90;
+    }
+    &:hover {
+        .tooltipable__tooltip {
+            display: block;
+        }
+    }
+}
+
+// help status
+.help-clickable {
+    cursor: pointer;
+    border-width: 5px;
+    border-style: solid;
+    border-color: $primary;
+    @include border-animation();   
+}
+
+#card-description-overlay {
+    background: $black;
+    color: $white;
+    min-width: 100px;
+    min-height: 50px;
+    position: fixed;
+    z-index: 10;
+    padding: 10px 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10%);
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.6);
+    .Card {
+        max-width: 100px;
+        float: left;
+        margin-right: 20px;
+        animation-name: none; // removing effect of clicable cards
+        filter:none;
+    }
+    > span { //close btn
+        position:absolute;
+        right: -10px;
+        top: -10px;
+        border: 2px solide $white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        &:hover { background: $danger; }
+    }
+}
+
+.opacity-animation {
+    @include opacity-animation();
+}
+
+.fade-in-animation-once {
+    animation: fadeIn ease 2s;    
+    }
+    @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }

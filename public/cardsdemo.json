@@ -1,0 +1,444 @@
+[
+  {
+    "ID": 101,
+    "character-number": 1,
+    "image": "/imgs/cards/characters/actor-secundario-bob.jpeg",
+    "name": "Actor Secundario Bob",
+    "type": "character",
+    "description": "Malvado Bob! Matas a uno de los personajes, que no cobrará ni participará en este turno."
+  },
+  {
+    "ID": 102,
+    "character-number": 2,
+    "image": "/imgs/cards/characters/nelson.jpeg",
+    "name": "Nelson",
+    "type": "character",
+    "description": "Ha ha! Le robas todo su dinero a otro jugador. No puedes robar ni al actor secundario Bob ni al personaje que él haya matado."
+  },
+  {
+    "ID": 103,
+    "character-number": 3,
+    "image": "/imgs/cards/characters/dependiente-de-la-tienda-de-comics.jpeg",
+    "name": "Dependiente de la tienda de cómics",
+    "type": "character",
+    "description": "Puedes intercambiar tus cartas por las cartas de otro jugador, o descartarte de tus cartas tomando el mismo número del mazo."
+  },
+  {
+    "ID": 104,
+    "character-number": 4,
+    "image": "/imgs/cards/characters/alcalde-quimby.jpeg",
+    "name": "Alcalde Quimby",
+    "type": "character",
+    "description": "Recoge la cinta de alcande y toma la iniciativa en el siguiente turno."
+  },
+  {
+    "ID": 105,
+    "character-number": 5,
+    "image": "/imgs/cards/characters/homer-simpson.jpeg",
+    "name": "Homer Simpson",
+    "type": "character",
+    "description": "Por mucho que lo intente Bart, no podrá destruir ninguna de tus cartas. Te las ingenias para sacar 1$ por cada carta Homeriana que hayas conseguido."
+  },
+  {
+    "ID": 106,
+    "character-number": 6,
+    "image": "/imgs/cards/characters/mr-burns.jpeg",
+    "name": "Mr. Burns",
+    "type": "character",
+    "description": "Nunca tienes bastante! Al terminar la acción, recibe 1$ adicional. Además, te llevas 1$ por cada carta de tu propiedad."
+  },
+  {
+    "ID": 107,
+    "character-number": 7,
+    "image": "/imgs/cards/characters/lenny-y-carl.jpeg",
+    "name": "Lenny y Carl",
+    "type": "character",
+    "description": "Roba 2 cartas más tras ejecutar la acción. También puedes comprar hasta 3 cartas en tu turno, en lugar de 1."
+  },
+  {
+    "ID": 108,
+    "character-number": 8,
+    "image": "/imgs/cards/characters/bart-simpson.jpeg",
+    "name": "Bart Simpson",
+    "type": "character",
+    "description": "Siempre liándola... puedes destruir cartas de otros jugadores, pero te costará el valor de dicha carta menos 1$. No puedes atacar a Homer. Recibe 1$ por cada carta Bartiana."
+  },
+  {
+    "ID": 1,
+    "image": "/imgs/cards/wildcards/apartamento-de-barney.jpeg",
+    "name": "apartamento-de-barney",
+    "type": "district",
+    "description": "Impresentable. Usa la carta y podrás escoger en reducir en 1 el límite de cartas construídas para acabar el juego",
+    "type-of-district": "wildcard",
+    "wildcard": "one-less-district-to-finish",
+    "price": 4
+},
+{
+    "ID": 2,
+    "image": "/imgs/cards/wildcards/badulaque.jpeg",
+    "name": "badulaque",
+    "type": "district",
+    "description": "Al acabar la partida, cada moneda que tengas te contarás como un punto",
+    "type-of-district": "wildcard",
+    "wildcard": "money-into-points",
+    "price": 4
+},
+{
+    "ID": 3,
+    "image": "/imgs/cards/wildcards/centro-de-convenciones.jpeg",
+    "name": "centro-de-convenciones",
+    "type": "district",
+    "description": "Con esta carta en tu ciudad, construir te costará $1 menos",
+    "type-of-district": "wildcard",
+    "wildcard": "build-cheaper",
+    "price": 5
+},
+{
+    "ID": 4,
+    "image": "/imgs/cards/wildcards/residencia-de-ancianos.jpeg",
+    "name": "residencia-de-ancianos",
+    "type": "district",
+    "description": "Si te quedas sin dinero al final de tu turno, recibe tu pensión de $1",
+    "type-of-district": "wildcard",
+    "wildcard": "take-1-coin-if-dont-have-any",
+    "price": 4
+},
+{
+    "ID": 5,
+    "image": "/imgs/cards/wildcards/cine-aztec.jpeg",
+    "name": "cine-aztec",
+    "type": "district",
+    "description": "Cuando escojas robar carta en tu turno, podrás visualizar 3 cartas en lugar de 2",
+    "type-of-district": "wildcard",
+    "wildcard": "see-3-cards",
+    "price": 5
+},
+{
+    "ID": 6,
+    "image": "/imgs/cards/wildcards/biblioteca.jpeg",
+    "name": "biblioteca",
+    "type": "district",
+    "description": "Te puedes quedar las dos cartas que levantes del mazo.",
+    "type-of-district": "wildcard",
+    "wildcard": "observatory",
+    "price": 6
+  },
+{
+    "ID": 7,
+    "image": "/imgs/cards/wildcards/campo-de-neumaticos.jpeg",
+    "name": "campo-de-neumaticos",
+    "type": "district",
+    "description": "Al acabar la partida, podrás escoger el color de esta carta. Esto te podrá dar puntos si, por ejemplo, tienes los 5 colores en tus cartas construídas",
+    "type-of-district": "wildcard",
+    "wildcard": "choose-card-color",
+    "price": 2
+  },
+{
+    "ID": 8,
+    "image": "/imgs/cards/wildcards/cementerio.jpeg",
+    "name": "cementerio",
+    "type": "district",
+    "description": "Si Bart te destruye una carta, puedes pagar 1 moneda para evitarlo, pero esa carta pasará a tu mazo personal. No se aplica si la carta destruída es precisamente el cementerio.",
+    "type-of-district": "wildcard",
+    "wildcard": "graveyard",
+    "price": 2
+  },
+{
+    "ID": 9,
+    "image": "/imgs/cards/wildcards/centro-comercial.jpeg",
+    "name": "centro-comercial",
+    "type": "district",
+    "description": "Por asuntos políticos, cada vez que cambie la alcaldía de jugador, te llevarás $1",
+    "type-of-district": "wildcard",
+    "wildcard": "coin-on-change-of-crown",
+    "price": 6
+  },
+{
+    "ID": 10,
+    "image": "/imgs/cards/wildcards/comisaria-de-policia.jpeg",
+    "name": "comisaria-de-policia",
+    "type": "district",
+    "description": "Le puedes pedir al Jefe Wiggum que destruya la carta que tú elijas a cualquiera de tus oponentes. Perderás esta carta al terminar la partida.",
+    "type-of-district": "wildcard",
+    "wildcard": "commisary",
+    "price": 3
+  },
+{
+    "ID": 11,
+    "image": "/imgs/cards/wildcards/hospital.jpeg",
+    "name": "hospital",
+    "type": "district",
+    "description": "Aunque Bob haya intentado matarte, no lo ha conseguido gracias a esta carta, y podrás recibir tu dinero o tus cartas, aunque no podrás ejecutar tu acción",
+    "type-of-district": "wildcard",
+    "wildcard": "hospital",
+    "price": 6
+  },
+{
+    "ID": 12,
+    "image": "/imgs/cards/wildcards/iglesia.jpeg",
+    "name": "iglesia",
+    "type": "district",
+    "description": "Bajo la protección del reverendo, a Bart le costará $1 más destruir tus cartas",
+    "type-of-district": "wildcard",
+    "wildcard": "destroy-more-expensive",
+    "price": 6
+  },
+{
+    "ID": 13,
+    "image": "/imgs/cards/wildcards/jebediah-springfield.jpeg",
+    "name": "jebediah-springfield",
+    "type": "district",
+    "description": "Carta de prestigio. Al acabar la partida, te dará 8 puntos, a pesar de que cuesta tan sólo 6",
+    "type-of-district": "wildcard",
+    "price": 6,
+    "extra-price": 2
+  },
+{
+    "ID": 14,
+    "image": "/imgs/cards/wildcards/krusty-burguer.jpeg",
+    "name": "krusty-burguer",
+    "type": "district",
+    "description": "Negocio redondo: gracias a la cadena de Krusty Burgues, y en especial a la tienda montada en la planta petrolífica, el valor de esta carta al final de la partida será de 8 puntos, 2 más de los $ que cuesta",
+    "type-of-district": "wildcard",
+    "price": 6,
+    "extra-price": 2
+  },
+{
+    "ID": 16,
+    "image": "/imgs/cards/wildcards/mano-de-mono.jpeg",
+    "name": "mano-de-mono",
+    "type": "district",
+    "description": "Tu deseo será cumplido: al construir esta carta, puedes escoger la carta que elijas del mazo. El mazo será barajado al acabar tu turno.",
+    "type-of-district": "wildcard",
+    "wildcard": "laboratory",
+    "price": 3
+  },
+{
+    "ID": 17,
+    "image": "/imgs/cards/wildcards/montana.jpeg",
+    "name": "montaña",
+    "type": "district",
+    "description": "Si no tienes cartas al final de tu turno, puedes robar dos del mazo",
+    "type-of-district": "wildcard",
+    "wildcard": "take-cards-if-dont-have-any",
+    "price": 6
+  },
+{
+    "ID": 18,
+    "image": "/imgs/cards/wildcards/rascapiquilandia.jpeg",
+    "name": "rascapiquilandia",
+    "type": "district",
+    "description": "Esta carta está a salvo de las barbaridades de Bart, quien no podrá destruirla",
+    "type-of-district": "wildcard",
+    "wildcard": "cant-be-destroyed",
+    "price": 3
+  },
+{
+    "ID": 19,
+    "image": "/imgs/cards/wildcards/rio.jpeg",
+    "name": "río",
+    "type": "district",
+    "description": "Al acabar la partida, añade $1 por cada carta de diferente color que tengas en tu mano",
+    "type-of-district": "wildcard",
+    "wildcard": "1-point-per-different-color",
+    "price": 5
+  },
+{
+    "ID": 20,
+    "image": "/imgs/cards/wildcards/sede-de-los-canteros.jpeg",
+    "name": "sede-de-los-canteros",
+    "type": "district",
+    "description": "Puedes construir cartas idénticas a las que ya tengas en tu propiedad.",
+    "type-of-district": "wildcard",
+    "wildcard": "can-build-duplicates",
+    "price": 5
+  },
+{
+    "ID": 21,
+    "image": "/imgs/cards/wildcards/tienda-de-donuts.jpeg",
+    "name": "tienda-de-donuts",
+    "type": "district",
+    "description": "En tu turno, puedes pagar $3 para obtener 3 cartas del mazo",
+    "type-of-district": "wildcard",
+    "wildcard": "buy-3-cards",
+    "price": 5
+  },
+{
+    "ID": 22,
+    "image": "/imgs/cards/wildcards/zurditorium.jpeg",
+    "name": "zurditorium",
+    "type": "district",
+    "description": "El negocio empieza a funcionar. En tu turno, puedes vender una de las cartas en tu mano y recibir $1 a cambio.",
+    "type-of-district": "wildcard",
+    "wildcard": "sell-card-per-1-coin",
+    "price": 5
+  },
+  {
+    "ID": 1001,
+    "image": "/imgs/cards/ayudante-de-santa-claus.jpeg",
+    "name": "ayudante-de-santa-claus",
+    "type": "district",
+    "description": "Carta Bartiana. Si la construyes y juegas con Bart, recibirás $1 al comenzar tu turno.",
+    "type-of-district": 8,
+    "price": 2,
+    "repeat-card" : 2
+},
+{
+    "ID": 1002,
+    "image": "/imgs/cards/ayuntamiento.jpeg",
+    "name": "ayuntamiento",
+    "type": "district",
+    "description": "Carta de Quimby. Con esta carta construida, recibirás $1 si juegas con el Alcalde Quimby",
+    "type-of-district": 4,
+    "price": 5
+},
+{
+    "ID": 1003,
+    "image": "/imgs/cards/bolera.jpeg",
+    "name": "bolera",
+    "type": "district",
+    "description": "Carta Homeriana. Si juegas con Homer, esta carta te dará $1 en tu turno si la has construído",
+    "type-of-district": 5,
+    "price": 3,
+    "repeat-card" : 2
+},
+{
+    "ID": 1004,
+    "image": "/imgs/cards/casa-de-arbol.jpeg",
+    "name": "casa-de-arbol",
+    "type": "district",
+    "description": "Carta Bartiana. Si la construyes y juegas con Bart, recibirás $1 al comenzar tu turno.",
+    "type-of-district": 8,
+    "price": 3,
+    "repeat-card" : 2
+},
+{
+    "ID": 1005,
+    "image": "/imgs/cards/casa-de-mr-burns.jpeg",
+    "name": "casa-de-mr-burns",
+    "type": "district",
+    "description": "Carta de Mr Burns. Recibe $1 en el turno de Mr Burns, si éste es tu personaje y esta carta está construída.",
+    "type-of-district": 6,
+    "price": 4,
+    "repeat-card" : 2
+},
+{
+    "ID": 1006,
+    "image": "/imgs/cards/casino.jpeg",
+    "name": "casino",
+    "type": "district",
+    "description": "Carta de Mr Burns. Recibe $1 en el turno de Mr Burns, si éste es tu personaje y esta carta está construída.",
+    "type-of-district": 6,
+    "price": 3,
+    "repeat-card" : 2
+},
+{
+    "ID": 1007,
+    "image": "/imgs/cards/central-nuclear.jpeg",
+    "name": "central-nuclear",
+    "type": "district",
+    "description": "Carta de Mr Burns. Recibe $1 en el turno de Mr Burns, si éste es tu personaje y esta carta está construída.",
+    "type-of-district": 6,
+    "price": 5
+},
+{
+    "ID": 1008,
+    "image": "/imgs/cards/coche.jpeg",
+    "name": "coche",
+    "type": "district",
+    "description": "Carta Homeriana. Si juegas con Homer, esta carta te dará $1 en tu turno si la has construído",
+    "type-of-district": 5,
+    "price": 2,
+    "repeat-card" : 2
+},
+{
+    "ID": 1009,
+    "image": "/imgs/cards/cuadro-de-mr-burns.jpeg",
+    "name": "cuadro-de-mr-burns",
+    "type": "district",
+    "description": "Carta de Mr Burns. Recibe $1 en el turno de Mr Burns, si éste es tu personaje y esta carta está construída.",
+    "type-of-district": 6,
+    "price": 1,
+    "repeat-card" : 2
+},
+{
+    "ID": 1010,
+    "image": "/imgs/cards/equipo-isotopos.jpeg",
+    "name": "equipo-isotopos",
+    "type": "district",
+    "description": "Carta de Mr Burns. Recibe $1 en el turno de Mr Burns, si éste es tu personaje y esta carta está construída.",
+    "type-of-district": 6,
+    "price": 2,
+    "repeat-card" : 2
+},
+{
+    "ID": 1011,
+    "image": "/imgs/cards/escuela.jpeg",
+    "name": "escuela",
+    "type": "district",
+    "description": "Carta Bartiana. Si la construyes y juegas con Bart, recibirás $1 al comenzar tu turno.",
+    "type-of-district": 8,
+    "price": 5,
+    "repeat-card" : 2
+},
+{
+    "ID": 1012,
+    "image": "/imgs/cards/mocasines-saltarines.jpeg",
+    "name": "mocasines-saltarines",
+    "type": "district",
+    "description": "Carta de Mr Burns. Recibe $1 en el turno de Mr Burns, si éste es tu personaje y esta carta está construída.",
+    "type-of-district": 6,
+    "price": 2,
+    "repeat-card" : 2
+},
+{
+    "ID": 1013,
+    "image": "/imgs/cards/monopatin-de-bart.jpeg",
+    "name": "monopatin-de-bart",
+    "type": "district",
+    "description": "Carta Bartiana. Si la construyes y juegas con Bart, recibirás $1 al comenzar tu turno.",
+    "type-of-district": 8,
+    "price": 1,
+    "repeat-card" : 2
+},
+{
+    "ID": 1015,
+    "image": "/imgs/cards/monorail.jpeg",
+    "name": "monorail",
+    "type": "district",
+    "description": "Carta de Quimby. Con esta carta construida, recibirás $1 si juegas con el Alcalde Quimby",
+    "type-of-district": 4,
+    "price": 4,
+    "repeat-card" : 3
+},
+{
+    "ID": 1016,
+    "image": "/imgs/cards/motel.jpeg",
+    "name": "motel",
+    "type": "district",
+    "description": "Carta de Quimby. Con esta carta construida, recibirás $1 si juegas con el Alcalde Quimby",
+    "type-of-district": 4,
+    "price": 3,
+    "repeat-card" : 3
+},
+{
+    "ID": 1017,
+    "image": "/imgs/cards/sofa.jpeg",
+    "name": "sofa",
+    "type": "district",
+    "description": "Carta Homeriana. Si juegas con Homer, esta carta te dará $1 en tu turno si la has construído",
+    "type-of-district": 5,
+    "price": 1,
+    "repeat-card" : 2
+},
+{
+    "ID": 1018,
+    "image": "/imgs/cards/taberna-de-moe.jpeg",
+    "name": "taberna-de-moe",
+    "type": "district",
+    "description": "Carta Homeriana. Si juegas con Homer, esta carta te dará $1 en tu turno si la has construído",
+    "type-of-district": 5,
+    "price": 5 
+  }
+   
+]

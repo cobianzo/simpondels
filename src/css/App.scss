@@ -1,0 +1,12 @@
+@import './bootstrap4/my-variables';
+@import './bootstrap4/my-mixins';
+
+.App {
+    margin: auto;
+    background: $body-bg;
+    max-width: 100%;
+    font-family: $font-family-monospace;
+    &--info-mode {
+        background: $white;
+    }
+}
