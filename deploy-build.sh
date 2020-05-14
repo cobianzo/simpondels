@@ -9,5 +9,3 @@ git add --all
 git commit -m "prod"
 git push
 cd ..
-rm -rf production
-rm -rf build

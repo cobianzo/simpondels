@@ -162,6 +162,7 @@ export function classAfterWait(nameOfClass, props) {
 }
 
 // USE: pronoum(props), pronoum(props, 'player'), pronoum(props, 'you', 'player')
+//  Needed props: players, currentPlayer, cardsAPI, 
 // @param normalpronoum: 'you' | number 1 to 8 | player
 // @param pronoum: 'player', 'char', 'you'
 // @RETURNS: you | Michael | Homer

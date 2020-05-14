@@ -13,6 +13,7 @@ import Pick4InitialCards from './stagesViews/Pick4InitialCards';
 import Discard1Character from './stagesViews/Discard1Character';
 // =.= Secondary Views
 import LaboratoryView from './wildcardsViews/LaboratoryView';
+import CommisaryView from './wildcardsViews/CommisaryView';
 
 function CardsDeck({ cards, setCards, characterCards, setCharacterCards, districtCards, setDistrictCards, players, setPlayers, hand, setHand, handBackup, setHandBackup, currentPlayer, setCurrentPlayer, playersAPI, gameAPI, cardsAPI, gameEndedBy, setGameEndedBy, gameOptions, justAFlag, setJustAFlag, infoMode, setInfoMode}) {
               
@@ -955,7 +956,9 @@ function CardsDeck({ cards, setCards, characterCards, setCharacterCards, distric
         { hand.stage === 'situation-laboratory:select-deck-card' ? 
           <LaboratoryView gameOptions={gameOptions} hand={hand} setHand={setHand} handBackup={handBackup} playersAPI={playersAPI} players={players} currentPlayer={currentPlayer} cardsAPI={cardsAPI} cards={cards} districtCards={districtCards} setDistrictCards={setDistrictCards} /> : null
         }
-        {viewSituationCommisaryDestroyCard()}
+        { hand.stage === 'situation-commisary:destroy-a-card' ? 
+          <CommisaryView gameOptions={gameOptions} gameAPI={gameAPI} setHand={setHand} handBackup={handBackup} playersAPI={playersAPI} players={players} setPlayers={setPlayers} currentPlayer={currentPlayer} cardsAPI={cardsAPI} cards={cards} /> : null
+        }
         {viewSituationPlayerChoosesEndGame()}
         {viewGameEndPlayerCount()}
     </div>

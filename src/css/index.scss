@@ -69,6 +69,7 @@
 .left-0  { left: 0 }
 .rotate-left { transform: rotate(-4deg); }
 .rotate-right { transform: rotate(4deg); }
+.transition-all { transition: all 0.3s; }
 .absolute-center {
     position: absolute;
     top: 50%;

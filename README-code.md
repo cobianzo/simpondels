@@ -1,6 +1,6 @@
 ## File structure
 
-- cardsdemo.json: needed. Here all cards with specification.
+- public/cardsdemo.json: needed. Here all cards with specification.
 {
     "ID": 1,  --- unique ID
     "image": "/imgs/cards/wildcards/apartamento-de-barney.jpeg",
@@ -13,6 +13,6 @@
     "extra-price"
 },
 
-- gameoptions.json : It is loaded when started the game. If not found then it is used:
-- gameoptions-default.json (this file is included in git, so it will always be there)
-- gamesaved.json: situation of a game that can be loaded. To create a snapshop in json of a game use the button save params and copy and paste the textarea in this file. Then load it with the button "Load game"
+- public/gameoptions.json : It is loaded when started the game. If not found then it is used:
+- public/gameoptions-default.json (this file is included in git, so it will always be there)
+- public/gamesaved.json: situation of a game that can be loaded. To create a snapshop in json of a game use the button save in the footer. Copy the params in a file. Paste it in the textbox and click Load to load a game.

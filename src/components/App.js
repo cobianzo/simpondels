@@ -6,7 +6,7 @@
   BUG: los wildcards no cuentan como carta de distrito
   Anotar cuando una carta ha sido construida en este turno, y marcarlas animadas
   BUG: mano de mono, al volver al backup stage, no gaurda bien. (quiza el handBackup no se resetea?)
-  TODO: when using commisary allow not to destroy anything.
+  DONE: when using commisary allow not to destroy anything.
   TODO: make decisions of computer with timeout to see what he does
   DONE: show info for wildcards when hovering, and characters when hovering in character selection
         For that, see how to create ref for  the class .tootilpable
@@ -27,6 +27,7 @@
   TODO: when having the card Centro de Convenciones, show a message explaining that building is $q cheaper
   TODO: Dont show Wait scren in stage discard 1 character card
   BUG: When teh computer has Lenny and Carl, I think he is not getting extra cards after Action
+  BUG: the action of a wildcard doesnt run the check Move to next
 */
 import React, { useState, useEffect, useRef } from 'react';
 
@@ -560,7 +561,7 @@ function App() {
         const characterNumber = parseInt(hand.stage.slice(hand.stage.lastIndexOf('-') + 1)); // grabs 3 from 'call-character-3' 
         return cardsAPI.getCardByCharacterNumber(characterNumber);
     },
-    getWildcards: (name, single=false) => {  // return array of cards index. considers that there might be more than 1 repeated wildcard
+    getWildcards: (name, single=false) => {  // return array of cards index. considers that there might be more than 1 repeated wildcard. If single===true returns the card index of the first wildcard found (normally there will be only that one)
       const arr = cards.filter(c=> c.wildcard === name ).map( c => cards.findIndex( innerC => c.ID === innerC.ID ) )
       return single? (arr.length? arr[0]:false) : arr; 
     }, 
@@ -1414,7 +1415,7 @@ useEffect(() => {
       <Footer gameAPI={gameAPI} currentPlayer={currentPlayer} hand={hand} players={players} playersAPI={playersAPI} gameOptions={gameOptions} setGameOptions={setGameOptions} cards={cards} cardsAPI={cardsAPI} infoMode={infoMode} setInfoMode={setInfoMode} gameStarted={gameStarted} crownPlayer={crownPlayer} setCards={setCards} characterCards={characterCards} districtCards={districtCards} gameEndedBy={gameEndedBy} />
 
       {
-       gameOptions.dev ? (
+        gameOptions.dev ? (
         <div className='devtools container'>
           <h5>District Deck</h5>
           <ul className='row district-deck list-unstyled'>
@@ -1432,9 +1433,7 @@ useEffect(() => {
             </li>) }
           </ul>
         </div>
-
-
-       ) : null
+        ) : null
 
       }
     </div>
