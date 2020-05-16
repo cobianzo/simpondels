@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Card from '../Card'
 import { logg, pronoum } from "../../helpers";
 
-// Laboratory wild card: allow the user to pick up any card from the dect
+// Commisary wild card: allow the user who builds it to destroy any built card from another
 // This Component shows, in a modal window, all cards in the deck, and the user must choose one by clicing on it.
 // WHEN: when the hand.stage is set to 'situation-laboratory:select-deck-card'. This happens when the laboratory card is built.
 function CommisaryView(props) {  
@@ -34,7 +34,6 @@ function CommisaryView(props) {
   useEffect(() => {
     timing && setTimeout(() => setTiming(timing - 1), 1000);
     if (timing === 0) {
-      debugger
       if (allDestroyableCardsArr.length) {
         cardRef.current && cardRef.current.click();
       } else {

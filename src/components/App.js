@@ -351,7 +351,7 @@ function App() {
         // Automatic decision to build cards
         if (players && players[currentPlayer].is_computer) {
           
-          // TODELETE
+          
           const rdnCard = Math.floor(Math.random() * (buildableCards.length));        
           const buildOrNot = (Math.floor(Math.random() * 2) < 2); // 66%
           

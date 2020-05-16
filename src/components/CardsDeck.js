@@ -14,6 +14,7 @@ import Discard1Character from './stagesViews/Discard1Character';
 // =.= Secondary Views
 import LaboratoryView from './wildcardsViews/LaboratoryView';
 import CommisaryView from './wildcardsViews/CommisaryView';
+import GraveyardView from './wildcardsViews/GraveyardView';
 
 function CardsDeck({ cards, setCards, characterCards, setCharacterCards, districtCards, setDistrictCards, players, setPlayers, hand, setHand, handBackup, setHandBackup, currentPlayer, setCurrentPlayer, playersAPI, gameAPI, cardsAPI, gameEndedBy, setGameEndedBy, gameOptions, justAFlag, setJustAFlag, infoMode, setInfoMode}) {
               
@@ -672,7 +673,7 @@ function CardsDeck({ cards, setCards, characterCards, setCharacterCards, distric
   }
 
   // When the Wardlord attacks a card, and the attacked player has the gravyard
-  const viewSituationGraveyardDefend = () => {
+/*  const viewSituationGraveyardDefend = () => {
 
     if (!cards.length) return;
     if ( hand.stage !== 'situation-graveyard:defend-with-graveyard') return; // set the hand.stage to thos in order to render this screen
@@ -743,9 +744,9 @@ function CardsDeck({ cards, setCards, characterCards, setCharacterCards, distric
       </div>
     
     </div>);
-  }
+  } */
 
-  const viewSituationCommisaryDestroyCard = () => {
+  /*const viewSituationCommisaryDestroyCard = () => {
     if (!cards.length) return null;
     if ( hand.stage !== 'situation-commisary:destroy-a-card') return null; // set the hand.stage to thos in order to render this screen
     
@@ -810,7 +811,7 @@ function CardsDeck({ cards, setCards, characterCards, setCharacterCards, distric
       </div>
       
     );
-  }
+  } */
 
   // if the player has the card Zurditurim, on his turn he can choose on changin one card and take 1 coin
   const partialViewSituationWildcardZurditurium = () => {
@@ -952,7 +953,9 @@ function CardsDeck({ cards, setCards, characterCards, setCharacterCards, distric
         <Discard1Character hand={hand} gameOptions={gameOptions} cards={cards} characterCards={characterCards} cardsAPI={cardsAPI} gameAPI={gameAPI} players={players} currentPlayer={currentPlayer} />
         {viewCharacterSelectionDeck()}
         {viewWrapperCharacter()}
-        {viewSituationGraveyardDefend()}
+        { hand.stage === 'situation-graveyard:defend-with-graveyard' ? 
+          <GraveyardView gameOptions={gameOptions} hand={hand} setHand={setHand} handBackup={handBackup} playersAPI={playersAPI} players={players} currentPlayer={currentPlayer} setCurrentPlayer={setCurrentPlayer} setPlayers={setPlayers} cardsAPI={cardsAPI} cards={cards} districtCards={districtCards} setDistrictCards={setDistrictCards} /> : null
+        }
         { hand.stage === 'situation-laboratory:select-deck-card' ? 
           <LaboratoryView gameOptions={gameOptions} hand={hand} setHand={setHand} handBackup={handBackup} playersAPI={playersAPI} players={players} currentPlayer={currentPlayer} cardsAPI={cardsAPI} cards={cards} districtCards={districtCards} setDistrictCards={setDistrictCards} /> : null
         }
