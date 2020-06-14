@@ -1,5 +1,8 @@
 import React from 'react';
 
+// Message on the dialog before starting a turn
+// These components go in the 
+
 export function DistrictSelectionHelp(props) {
 
   return (

@@ -1,3 +1,4 @@
+// Action Btn is the button saying "Money" or "Cards" at the beginning of the turn.
 // This is called in CardsDeck.js, inside fn viewWrapperCharacter(). 
 // Only used when the stage is a character call.
 import React, {useState} from 'react';

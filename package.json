@@ -3,14 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@welldone-software/why-did-you-render": "^4.2.5",
+    "apollo-boost": "^0.4.9",
     "bootstrap": "^4.4.1",
+    "graphql": "^15.1.0",
+    "graphql-tag": "^2.10.3",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
+    "react-apollo": "^3.1.5",
     "react-css-transition": "^0.7.4",
     "react-dom": "^16.13.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"
   },
   "scripts": {
@@ -35,6 +43,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-transition-group": "^4.2.4"
+    "@types/react-transition-group": "^4.2.4",
+    "dotenv": "^8.2.0"
   }
 }

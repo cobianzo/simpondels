@@ -22,8 +22,15 @@ gameoptions.json
 .env.development.local
 .env.test.local
 .env.production.local
+#our enviroment is
+*.env
+
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Wordpress
+wp-config.php
+/wordpress/wp-content/cache
+# more wordpress stuff. Dont track uploads or at least not the image versions

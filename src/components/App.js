@@ -1,10 +1,10 @@
 /*TODO:
 
-  Al construir, evitar q se puedan construir dos cartas iguales. (actualizar allow to build, buildable card)
+  DONE: Al construir, evitar q se puedan construir dos cartas iguales. (actualizar allow to build, buildable card)
   BUG: turno lenny & card. Escoger cartas y no dinero. A acabar la accion se ejecuta la Character Act, q es tomar 2 cartas mas. Pero la turn param pickedCardsThisPlayerTurn se queda en 2 y no 4.
   BUG: bart, when destroying a card, he can build  
-  BUG: los wildcards no cuentan como carta de distrito
-  Anotar cuando una carta ha sido construida en este turno, y marcarlas animadas
+  FIXED: los wildcards no cuentan como carta de distrito
+  DONE: Anotar cuando una carta ha sido construida en este turno, y marcarlas animadas
   BUG: mano de mono, al volver al backup stage, no gaurda bien. (quiza el handBackup no se resetea?)
   DONE: when using commisary allow not to destroy anything.
   TODO: make decisions of computer with timeout to see what he does
@@ -42,9 +42,12 @@ import WaitConfirmationModal from './WaitConfirmationModal';
 import Debug from './Debug';
 import '../css/App.scss';
 import { shuffle, unique, isEmpty, logg, logfn, pronoum } from "../helpers";
+import { loadApolloClient, GET_GAMEFRAME_BY_SLUG, loadCardsFromDB } from "../db-api";
 
-
-function App() {
+// The app can be called unsing Router technics. 
+// When called with redirect, then 'location' contains params, in particualr the param location.gameProps.initCards, with the JSON of all the cards
+// When called from Router match, the params are in match.params.gameslug, with a value of the slug of the gameframe
+function App({location, match}) {
 
   // M O D E L +++++++++++++++++++++++++++++++++++++++ states
   const [cards, setCards] = useState([]); // [ {cardOjb}, {cardObj} ... ]
@@ -77,7 +80,7 @@ function App() {
   const [infoMode, setInfoMode] = useState(false); // makes that clicking a card gives you the info about the card.
   const [temporaryMessage, setTemporaryMessage] = useState(null); // not in use yet!
   const [tooltipMsg, setTooltipMsg] = useState(null);
-  const [justAFlag, setJustAFlag] = useState(false);
+  const [justAFlag, setJustAFlag] = useState(false); // Probably we can ger rid of this
   const [gameOptions, setGameOptions] = useState({ // this is updated by an external file
     // dev: true,
     // waitForPlayer: false,
@@ -106,6 +109,39 @@ function App() {
 
   // in case I need to pass them all.
   const props = { cards, characterCards, districtCards, players, crownPlayer, hand, handBackup, currentPlayer, gameEndedBy, gameStarted, infoMode, temporaryMessage, tooltipMsg, justAFlag, gameOptions }
+
+  // __CONSTRUCTOR: ON COMPONENT MOUNT - considers two cases: 
+  // 1_ In case we call App from a router link with the cards as prop: <NavLink to={{ path:..., gameProps: initCards  }}, 2_ In case the url specifies the slug of the gameframe /game/simpondels
+  useEffect(() => {
+    // CASE the App component was called from Router <Redirect>
+    if ( location.gameProps?.initCards) {
+      setCards(location.gameProps.initCards);
+    }
+
+    // CASE The App component was called from <Router match>
+    if (match?.params?.gameslug) {
+      const { gameslug } = match.params;
+      // create a fn to load the gameframe from the slug
+
+      loadApolloClient().query({
+          query: GET_GAMEFRAME_BY_SLUG,
+          variables: { slug: gameslug },
+        })
+        .then((result) => {
+          console.log('gameframe loaded;', result);
+          loadCardsFromDB(result.data.gameframeBy, setCards);
+        });
+    }
+
+    console.log('component did mount',location.gameProps?.initCards);
+  }, []);
+
+  
+//  I dont know how to use why did you render with hooks
+//if (gameOptions.dev) {
+//   const whyDidYouRender = require('@welldone-software/why-did-you-render');
+//   whyDidYouRender(React);
+// }
 
   // Helper - use it with a state param. ie const prev = usePrevious(cards)
   const usePrevious = value => {
@@ -1388,7 +1424,7 @@ useEffect(() => {
         <div className='App__body-temporarymessage'>{temporaryMessage}</div> { /* not in use so far */ }
 
         { /* This renders 1 on the 1st time */  }
-        <StartGame gameAPI={gameAPI} cards={cards} gameStarted={gameStarted}  />
+        <StartGame gameAPI={gameAPI} cards={cards} gameStarted={gameStarted} isLoading={ match?.params?.gameslug? true : false } />
 
         <div className={'row m-0' + (gameStarted? '' : ' d-none') }>
           {gameOptions.dev? (<div className='DevInfo col-2 border small'>

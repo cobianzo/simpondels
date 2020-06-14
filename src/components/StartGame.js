@@ -1,7 +1,7 @@
 import React from 'react';
 
 function StartGame(props) {
-  const { gameStarted, cards, gameAPI } = props;
+  const { gameStarted, cards, gameAPI, isLoading } = props;
 
   if (gameStarted) return null;
 
@@ -14,9 +14,8 @@ function StartGame(props) {
         /* Screen 1. Click Start */
         <div className='w-100 m-0 text-center'>
           <h1>Welcome to the Simpondels</h1>
-          <button className={'btn btn-primary btn-lg m-auto  opacity-animation'} onClick={() => gameAPI? gameAPI.initDemoGame(): null}>
-          Click to Start</button>
-          
+          {isLoading ? "Loading" : (<button className={'btn btn-primary btn-lg m-auto  opacity-animation'} onClick={() => gameAPI ? gameAPI.initDemoGame() : null}>
+            Click to Start</button>) }
         </div>) : null}
         { (!gameStarted && cards.length) ? (
           /* Screen 2. Select players */
