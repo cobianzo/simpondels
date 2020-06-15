@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 function StartGame(props) {
   const { gameStarted, cards, gameAPI, isLoading } = props;
@@ -10,6 +11,7 @@ function StartGame(props) {
 
   return (
     <div className='container mt-5 mb-3'>
+      <NavLink to='/'>Back to home</NavLink>
       { !(cards && cards.length)? (
         /* Screen 1. Click Start */
         <div className='w-100 m-0 text-center'>

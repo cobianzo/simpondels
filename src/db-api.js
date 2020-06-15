@@ -92,23 +92,197 @@ export const GET_CARDS = gql`
              title
              id
              district_wildcards {
-               oneLessDistrictToFinish {
+              oneLessDistrictToFinish  {
                  description
                  price
                  name
                  image {
                    sourceUrl
                  }
-               }
-               prestigeCard1 {
-                 description
-                 price
-                 extraPrice
-                 name
-                 image {
-                   sourceUrl
-                 }
-               }
+              }
+              moneyIntoPoints  {
+                              description
+                              price
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              buildCheaper  {
+                              description
+                              price
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              take1CoinIfDontHaveAny  {
+                              description
+                              price
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              see3Cards  {
+                              description
+                              price
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              observatory  {
+                              description
+                              price
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              chooseCardColor  {
+                              description
+                              price
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              graveyard  {
+                              description
+                              price
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              coinOnChangeOfCrown  {
+                              description
+                              price
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              commisary  {
+                              description
+                              price
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              hospital  {
+                              description
+                              price
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              destroyMoreExpensive  {
+                              description
+                              price
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              laboratory  {
+                              description
+                              price
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              takeCardsIfDontHaveAny  {
+                              description
+                              price
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              cantBeDestroyed  {
+                              description
+                              price
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              pointPerDifferentColor  {
+                              description
+                              price
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              canBuildDuplicates  {
+                              description
+                              price
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              buy3Cards  {
+                              description
+                              price
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              sellCardPer1Coin  {
+                              description
+                              price
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              prestigeCard1  {
+                              description
+                              price
+                              extraPrice
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+              prestigeCard2  {
+                              description
+                              price
+                              extraPrice
+                              name
+                              image {
+                                sourceUrl
+                              }
+                              fieldGroupName
+                            }
+
              }
              district_cards_repeater {
                fieldGroupName
@@ -117,6 +291,7 @@ export const GET_CARDS = gql`
                  price
                  districtNum
                  name
+                 repeat
                  image {
                    sourceUrl
                  }
@@ -248,7 +423,23 @@ export const loadCardsFromDB = async ( gameFramePost, setInitCards ) => {
         });
 
         // Set up wildcards
-
+        if (result?.data?.gameframe?.district_wildcards) {
+          Object.keys(result.data.gameframe.district_wildcards).forEach((key, i) => {
+            const element = result.data.gameframe.district_wildcards[key];
+            cardsJSON.push({
+              ID: key,
+              "character-number": i + 1,
+              image: element.image?.sourceUrl ? element.image.sourceUrl : null, //mediaDetails?.sizes? element.image?.mediaDetails?.sizes[0].file,
+              name: element.name,
+              type: "district",
+              "type-of-district": "wildcard",
+              wildcard: element.fieldGroupName,
+              description: element.description,
+              price: element.price,
+            });
+          });
+          
+        }
 
         // Set up district cards
         if (result?.data?.gameframe?.district_cards_repeater?.districtCardsGroup)
@@ -264,6 +455,7 @@ export const loadCardsFromDB = async ( gameFramePost, setInitCards ) => {
                 description: element.description,
                 "type-of-district": parseInt(element.districtNum),
                 price: element.price,
+                "repeat-card": element.repeat || 1 
               });
             }
           );

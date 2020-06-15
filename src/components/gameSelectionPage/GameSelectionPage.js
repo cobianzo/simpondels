@@ -35,9 +35,9 @@ function GamePicker() {
     // Get all AC fields.
     setNewGameFrame(gameFramePost);
 
-    // LOADING with graphQL the cards:
-    const cardsJSON = loadCardsFromDB(gameFramePost, setInitCards);
-    // Need await?
+    // LOADING with graphQL the cards: This works but I prefer to do this in the App
+    // const cardsJSON = loadCardsFromDB(gameFramePost, setInitCards);
+    
   }
   const createNewGame = (gameName) => {
       alert(`creating game ${gameName}`);
@@ -46,9 +46,10 @@ function GamePicker() {
 
   // if (initCards)
   //   return <Redirect to={{ pathname: '/game/', gameProps: { initCards } }} />;
-    
+  
+  // When the GameFrame is loaded from GraphQL we can load the page with the url
   if (newGameFrame)
-    return <Redirect to={{ pathname: '/game/' + newGameFrame.slug, gameProps: { initCards } }} />;
+    return <Redirect to={{ pathname: '/game/' + newGameFrame.slug }} />;
     
   return (
     <div className="container">
@@ -73,7 +74,7 @@ function GamePicker() {
               </button>
             </div>
             <div className="col-12 col-sm-4 text-center">
-              <NavLink to={{ pathname: '/game/simpsons', gameProps: { testProp: '444'} }}>Just play Simpsondels</NavLink>
+              <NavLink to={{ pathname: '/game/', gameProps: { testProp: '444'} }}>Just play Simpsondels</NavLink>
             </div>
             <div className="col-12 col-sm-4 text-center">
               <button

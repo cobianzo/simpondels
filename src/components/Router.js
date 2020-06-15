@@ -11,6 +11,7 @@ const Router = () => {
       <Switch>
         <Route exact path="/" component={GameSelectionPage} />
         <Route path="/game/:gameslug" component={App} />        
+        <Route exact path="/game/" component={App} />        
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>

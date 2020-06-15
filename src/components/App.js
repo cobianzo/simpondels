@@ -127,12 +127,18 @@ function App({location, match}) {
           query: GET_GAMEFRAME_BY_SLUG,
           variables: { slug: gameslug },
         })
-        .then((result) => {
+        // result is the gameframe
+        .then((result) => { 
           console.log('gameframe loaded;', result);
-          loadCardsFromDB(result.data.gameframeBy, setCards);
+          if (result.data.gameframeBy) {
+            loadCardsFromDB(result.data.gameframeBy, cardsAPI.loadCardsJSON);
+            gameOptions.title = result.data.gameframeBy.title;
+            setGameOptions(gameOptions);
+          }
         });
     }
 
+    gameAPI.loadGameOptions();
     console.log('component did mount',location.gameProps?.initCards);
   }, []);
 
@@ -169,8 +175,7 @@ function App({location, match}) {
               /  ************  \        /  ************  \
  */
   const gameAPI = {
-    initDemoGame: async() => {
-      
+    loadGameOptions: async() => {  
       const url = window.location.origin + '/gameoptions.json';
       await fetch(url)
               .then(response => response.json())
@@ -179,6 +184,10 @@ function App({location, match}) {
                 logg('loaded gameoptions for this environment: ', json);
                 setGameOptions(json);                    
               });
+    },
+    initDemoGame: async() => {
+      
+      gameAPI.loadGameOptions(); // loads gameoptions.json
 
       cardsAPI.loadCards();
       gameAPI.initPlayers([{ name: 'Giuseppe', is_computer: true}, { name: 'Player 1' }, { name: 'Canallita', is_computer: true }]);
@@ -558,6 +567,23 @@ function App({location, match}) {
   const cardsAPI = {
     // @MODEL:CARDS - INIT
     // grab the cards from json file and load them into 
+    loadCardsJSON: async(JSONCards) => {
+
+      JSONCards.forEach(card => {
+          if (card["repeat-card"]) {
+            // in the file, if the card has the field repeat-card, we clone that card that amount of times.
+            const repeatTimes = card["repeat-card"];
+            delete card["repeat-card"];
+            for ( let i =1; i < repeatTimes; i++) {
+              let newCard = Object.assign({}, card);
+              newCard.ID = card.ID + '.'+i; // new ID is '104.1' for example
+              JSONCards.push(newCard);
+            }
+        }
+      });
+      setCards([...JSONCards]);
+    },
+
     loadCards: async () => {
       logfn( 'loadCards', [...arguments ]);
       // Change this in the future if we want to load different cards from an API
@@ -568,19 +594,7 @@ function App({location, match}) {
         .then(response => response.json())
         .then(json => {
           console.log(json);
-          json.forEach(card => {
-            if (card["repeat-card"]) {
-              // in the file, if the card has the field repeat-card, we clone that card that amount of times.
-              const repeatTimes = card["repeat-card"];
-              delete card["repeat-card"];
-              for ( let i =1; i < repeatTimes; i++) {
-                let newCard = Object.assign({}, card);
-                newCard.ID = card.ID + '.'+i; // new ID is '104.1' for example
-                json.push(newCard);
-              }
-            }
-          });
-          setCards([...json]);
+          cardsAPI.loadCardsJSON(json);
         });
 
       // or whatever you want to do with the resulting object
@@ -774,15 +788,14 @@ function App({location, match}) {
 
       // 1) DATA: init the player and the card. If not player set, get current. If not card set, random.
       let deck, grabLastDistrictCard;
-      
-      if (typeof(cardID) === 'number') {
+      if (cardID === 'last-district-card') {
+        deck = [...districtCards];
+        grabLastDistrictCard = (cardID === 'last-district-card');
+      } else {
         const { type : cardType } = cardsAPI.getCardByID(cardID);
         deck = (cardType === 'district') ? [...districtCards] : [...characterCards];
         times = 1; // just to make sure we run it exactly 1 loop.
-      } else {
-        deck = [...districtCards];
-        grabLastDistrictCard = (cardID === 'last-district-card');
-      }
+      } 
       const thePlayerIndex = playerIndex || currentPlayer;
       let playersUpdated = [...players];
       let cardIndex, theCard;
@@ -1099,7 +1112,7 @@ function App({location, match}) {
       puntuation.pointsByFinishingGame = gameEndedBy === plIndx? 4 : 0;
       puntuation.pointsBy8Districts = (builtCards.length >= gameOptions.endsGame && !puntuation.pointsByFinishingGame)? 2 : 0;
       puntuation.pointsByBadulaque = playersAPI.playerHasBuiltWildcard(plIndx, 'money-into-points')? players[plIndx].money : 0; // modificator badulaque
-      puntuation.pointsByRio = playersAPI.playerHasBuiltWildcard(plIndx, '1-point-per-different-color')? uniqueColorsBuilt.length : 0;  // modificator rio  
+      puntuation.pointsByRio = playersAPI.playerHasBuiltWildcard(plIndx, 'point-per-different-color')? uniqueColorsBuilt.length : 0;  // modificator rio  
       puntuation.total = puntuation.pointsByCards+puntuation.pointsByColor+puntuation.pointsByFinishingGame+puntuation.pointsBy8Districts+puntuation.pointsByBadulaque;
       return puntuation;
     }
